@@ -1,13 +1,13 @@
 /* eslint-disable */
-export {}
-declare module 'vue' {
+export {};
+declare module "vue" {
   interface ComponentCustomProperties {
-    $translate: Function
+    $translate: Function;
   }
 }
-declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
+declare module "*.vue" {
+  import type { DefineComponent } from "vue";
 
-  const component: DefineComponent<{}, {}, any>
-  export default component
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
 }
