@@ -12,4 +12,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  color: #1890ff;
+  &:active {
+    color: #1890ff;
+  }
+}
 </style>

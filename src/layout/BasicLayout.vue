@@ -12,13 +12,13 @@ console.log(route);
   <div class="common-layout">
     <el-container direction="horizontal">
       <el-aside :width="!store.state.collapse ? '200px' : '64px'">
-        <!--width="200px" :width="!store.state.collapse ? '200px' : '100px'" -->
-        <el-row>
+        <el-row style="height: 55px">
+          <!-- style="background-color: #545c64; color: #fff" -->
           <el-col :span="7">
             <img
               src="@/assets/logo.png"
               style="width: 50px; height: 50px"
-              alt=""
+              alt="logo_img"
             />
           </el-col>
           <el-col
@@ -32,6 +32,7 @@ console.log(route);
         <el-menu
           style="user-select: none"
           :collapse="store.state.collapse"
+          :width="!store.state.collapse ? '200px' : '64px'"
           router
           :default-active="route.path"
           class="el-menu-vertical-demo"
@@ -64,21 +65,31 @@ console.log(route);
       <el-container direction="vertical">
         <el-header>
           <el-switch v-model="store.state.collapse" />
-          <el-dropdown
-            type="button"
-            @command="(c) => store.commit('SET_LANG', c)"
-          >
-            <el-button type="primary">
-              {{ store.state.lang == "CN" ? "中文" : "english" }}
-              <el-icon class="el-icon--right"><arrow-down /></el-icon>
-            </el-button>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item command="CN">中文</el-dropdown-item>
-                <el-dropdown-item command="EN">English</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
+          <div style="display: flex">
+            <el-dropdown @command="(c) => store.commit('SET_LANG', c)">
+              <el-button type="primary">
+                {{ store.state.lang == "CN" ? "中文" : "English" }}
+                <el-icon class="el-icon--right"><arrow-down /></el-icon>
+              </el-button>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item command="CN">中文</el-dropdown-item>
+                  <el-dropdown-item command="EN">English</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+            <div style="display: flex; align-items: center; margin-left: 50px">
+              <el-avatar
+                size="small"
+                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+              >
+                user
+              </el-avatar>
+              <span style="margin-left: 10px; color: #666; font-size: 13px"
+                >Admin</span
+              >
+            </div>
+          </div>
         </el-header>
         <el-main>
           <el-breadcrumb separator="/">
@@ -94,7 +105,10 @@ console.log(route);
           <router-view></router-view>
         </el-main>
         <el-footer>
-          <a href="https://github.com/Pursuit01/vue3-ts-template">
+          <a
+            href="https://github.com/Pursuit01/vue3-ts-template"
+            target="_blank"
+          >
             Copyright &copy; Github
           </a>
         </el-footer>
@@ -109,17 +123,25 @@ console.log(route);
 
   .el-aside {
     height: 100vh;
-    box-shadow: 4px 0 8px #ccc;
-    // background-color: #eee;
+    transition: all 0.4s;
+    // box-shadow: 4px 0 8px #ccc;
+    .el-menu-vertical-demo {
+      height: calc(100% - 55px);
+    }
   }
   .el-header {
     height: 55px;
-    line-height: 55px;
+    // line-height: 55px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
     box-shadow: 0 4px 8px #ccc;
+  }
+  .el-main {
+    .el-breadcrumb {
+      font-size: 16px;
+    }
   }
   .el-footer {
     text-align: center;
