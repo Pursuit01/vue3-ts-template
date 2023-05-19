@@ -109,7 +109,7 @@ console.log(route);
             href="https://github.com/Pursuit01/vue3-ts-template"
             target="_blank"
           >
-            Copyright &copy; Github
+            Copyright &copy; 2023 Github
           </a>
         </el-footer>
       </el-container>
